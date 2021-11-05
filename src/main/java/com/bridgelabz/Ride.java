@@ -8,6 +8,7 @@ package com.bridgelabz;
 public class Ride {
     public int time;
     public double distance;
+    public final CabRide cabRide;
 
     /**
      * Constructor to initialize variables.
@@ -15,8 +16,9 @@ public class Ride {
      * @param distance
      * @param time
      */
-    public Ride(double distance, int time) {
+    public Ride(CabRide cabRide, double distance, int time) {
         this.time = time;
         this.distance = distance;
+        this.cabRide = cabRide;
     }
 }

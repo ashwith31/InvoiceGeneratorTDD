@@ -7,13 +7,13 @@ package com.bridgelabz;
  * @since : 04/11/21
  ********************************************************/
 
-public class InvoiceGenerator {
+public class InvoiceService {
     private static final double MINIMUM_COST_PER_KILOMETER = 10;
     private static final int COST_PER_TIME = 1;
     private static final double MINIMUM_FARE = 5;
-    private final RideRepository rideRepository;
+    private RideRepository rideRepository;
 
-    public InvoiceGenerator() {
+    public InvoiceService() {
         this.rideRepository =  new RideRepository();
     }
 
@@ -40,7 +40,7 @@ public class InvoiceGenerator {
     public InvoiceSummary calculateFare(Ride[] rides) {
         double totalFare = 0;
         for (Ride ride : rides) {
-            totalFare += this.calculateFare(ride.distance, ride.time);
+            totalFare += ride.cabRide.calculateCostOfRide(ride);
         }
         return new InvoiceSummary(rides.length, totalFare);
     }
@@ -63,5 +63,9 @@ public class InvoiceGenerator {
      */
     public InvoiceSummary getInvoiceSummary(String userId) {
         return this.calculateFare(rideRepository.getRides(userId));
+    }
+
+    public void setRideRepository(RideRepository rideRepository) {
+        this.rideRepository = rideRepository;
     }
 }
