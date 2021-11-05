@@ -5,8 +5,7 @@ package com.bridgelabz;
  *
  * @author Ashwith
  * @since 5/11/21
- */
-
+ *************************************************************/
 public class Ride {
     public int time;
     public double distance;
