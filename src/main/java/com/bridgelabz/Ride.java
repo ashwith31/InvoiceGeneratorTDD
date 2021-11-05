@@ -1,5 +1,4 @@
 package com.bridgelabz;
-
 /*************************************************************
  * This is a pojo class where we create objects of rides.
  *

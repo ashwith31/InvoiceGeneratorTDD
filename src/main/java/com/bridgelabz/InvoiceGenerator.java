@@ -11,6 +11,11 @@ public class InvoiceGenerator {
     private static final double MINIMUM_COST_PER_KILOMETER = 10;
     private static final int COST_PER_TIME = 1;
     private static final double MINIMUM_FARE = 5;
+    private final RideRepository rideRepository;
+
+    public InvoiceGenerator() {
+        this.rideRepository =  new RideRepository();
+    }
 
     /**
      * This method calculates the fare for the ride.
@@ -38,5 +43,25 @@ public class InvoiceGenerator {
             totalFare += this.calculateFare(ride.distance, ride.time);
         }
         return new InvoiceSummary(rides.length, totalFare);
+    }
+
+    /**
+     * This method is used to add the rides of the specific user.
+     *
+     * @param userId
+     * @param rides
+     */
+    public void addRides(String userId, Ride[] rides) {
+        rideRepository.addRides(userId, rides);
+    }
+
+    /**
+     * This method is used to get the invoice summary of a user
+     *
+     * @param userId
+     * @return Invoice Summary object
+     */
+    public InvoiceSummary getInvoiceSummary(String userId) {
+        return this.calculateFare(rideRepository.getRides(userId));
     }
 }

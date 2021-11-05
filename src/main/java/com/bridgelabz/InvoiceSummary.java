@@ -1,5 +1,4 @@
 package com.bridgelabz;
-
 /*******************************************************
  * Purpose: This is a pojo class which is used while making the summary of rides
  *
